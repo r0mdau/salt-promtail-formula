@@ -14,5 +14,6 @@ scrape_configs:
   - targets:
       - localhost
     labels:
+      host: {{ grains['host'] }}
       job: varlogs
       __path__: /var/log/*log
