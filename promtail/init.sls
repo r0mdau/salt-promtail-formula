@@ -37,4 +37,4 @@ promtail_running:
     - name: promtail
     - enable: True
     - watch:
-      - module: promtail_conf
+      - module: promtail_systemd_unit
