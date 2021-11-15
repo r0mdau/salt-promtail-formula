@@ -17,3 +17,8 @@ scrape_configs:
       host: {{ grains['host'] }}
       job: varlogs
       __path__: /var/log/*log
+{%- if pillar['promtailjobs'] is defined %}
+{%- for jobs in pillar['promtailjobs'] %}
+{{ jobs.job }}
+{%- endfor %}
+{%- endif %}
