@@ -10,7 +10,7 @@ promtailjobs:
         static_configs:
         - targets:
             - localhost
-            labels:
+          labels:
             host: web
             job: nginxaccess
             __path__: /var/log/nginx/*.access.log
