@@ -36,5 +36,7 @@ promtail_running:
   service.running:
     - name: promtail
     - enable: True
+    - reload: True
     - watch:
       - module: promtail_systemd_unit
+      - file: /opt/promtail/promtail-config.yml
