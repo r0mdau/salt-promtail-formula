@@ -40,3 +40,8 @@ promtail_running:
     - watch:
       - module: promtail_systemd_unit
       - file: /opt/promtail/promtail-config.yml
+
+systemd-journal:
+  group.present:
+    - addusers:
+      - promtail
