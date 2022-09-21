@@ -1,3 +1,7 @@
+acl:
+  pkg.installed:
+    - install_recommends: False
+
 promtail:
   user.present:
     - fullname: Grafana promtail
