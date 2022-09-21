@@ -23,6 +23,24 @@ promtail_binary:
     - group: promtail
     - enforce_toplevel: False
 
+systemd-journal:
+  group.present:
+    - addusers:
+      - promtail
+
+adm:
+  group.present:
+    - addusers:
+      - promtail
+
+varlog:
+  acl.present:
+    - name: /var/log
+    - acl_type: user
+    - acl_name: promtail
+    - perms: rx
+    - recurse: True
+
 promtail_systemd_unit:
   file.managed:
     - name: /etc/systemd/system/promtail.service
@@ -40,8 +58,3 @@ promtail_running:
     - watch:
       - module: promtail_systemd_unit
       - file: /opt/promtail/promtail-config.yml
-
-systemd-journal:
-  group.present:
-    - addusers:
-      - promtail
