@@ -16,7 +16,7 @@ scrape_configs:
     labels:
       host: {{ grains['host'] }}
       job: varlogs
-      __path__: /var/log/*log
+      __path__: /var/log/{auth,fail2ban}.log
 {%- if pillar['promtailjobs'] is defined %}
 {%- for jobs in pillar['promtailjobs'] %}
 {{ jobs.job }}
